@@ -15,9 +15,18 @@ collection_films = database["movies"]
 # Create query
 query = {"title": "The Italian"}
 
-film = collection_films.find_one(query)
+try:
+    film = collection_films.find_one(query)
+    if film:
+        print("Film found: ")
+        pprint(film)
+    else:
+        print("Film not found.")
 
-pprint(film)
+except Exception as error:
+    print("Error found. Verify your connection string: ", error)
 
-# Close connection
-client.close()
+finally:
+    
+    # Close connection
+    client.close()
