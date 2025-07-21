@@ -16,7 +16,7 @@ async def busque_filmes():
 
         film = await collection_movies.find_one(query)
         if film:
-            pprint("Found film: ", film)
+            print(film)
         else:
             pprint("No film found!")
             
@@ -24,3 +24,5 @@ async def busque_filmes():
         print(error)
     finally:
         client.close()
+
+asyncio.run(busque_filmes())
